@@ -6,22 +6,28 @@
         <link rel="stylesheet" type="text/css" href="style.css" />
     <title> Coding Quiz</title>
     </head>
+    <body>
 <!--this is the main container for where the questions will appear-->
-<div class ="container">
+<div class ="container" visible>
     <!--I created all the buttons to go inside the container-->
-<button id="start-button">Start the Quiz</button>
-<button id="next-button" hidden>Next Button</button>
-<button id="restart-button" hidden>Restart the Quiz</button>
-<div id="answer-buttons" hidden class="button-grid">
-    <button class ="btn"> First Answer</button>
-    <button class ="btn"> Second Answer</button>
-    <button class ="btn"> Third Answer</button>
-    <button class ="btn"> Fourth Answer</button>
+
+<div id="answer-buttons" visible class="button-grid">
+    <button id ="answer-button"> First Answer</button>
+    <button id ="answer-button"> Second Answer</button>
+    <button id ="answer-button"> Third Answer</button>
+    <button id ="answer-button"> Fourth Answer</button>
 </div>
+<button id="start-button" visible>Start the Quiz</button>
+<button id="next-button" visible>Next Button</button>
+<button id="restart-button" visible>Restart the Quiz</button>
+
     <!--questions will be inside of the container-->
     <div class="question-container" class="hide"></div>
     </div>
     <!-- I created a score container that will contain total scores-->
     <div class="score-container">
         <div id="user-score" hidden>Total Scores</div>
+        <script src="javascript.js"></script>
+        </div>
+        </body>
 </html>
