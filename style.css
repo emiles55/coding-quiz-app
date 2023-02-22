@@ -1,0 +1,31 @@
+*{
+    padding : 0;
+    margin : 0;
+    box-sizing:border-box;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+body {
+width: 100vw;
+height: 100vh;
+background-color: rgb(255, 192, 241);
+display: flex;
+justify-content: center;
+align-items: center;
+}
+#start-button, #restart, #next{
+    font-size: 1.3em;
+    padding: 0.5em 1.8em;
+    border-radius: 0.2em;
+}
+.container{
+    background-color: white;
+    padding: 3.1em 1.8em; 
+    width: 80%;
+    max-width: 37.5em;
+    margin: 0 auto;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    border-radius:0.6em;
+}

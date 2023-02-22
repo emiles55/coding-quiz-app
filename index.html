@@ -9,12 +9,19 @@
 <!--this is the main container for where the questions will appear-->
 <div class ="container">
     <!--I created all the buttons to go inside the container-->
-<button class="start-button">Start the Quiz</button>
-<button class="next-button" hidden>Next Button</button>
-<button class="restart-buttong" hidden>Restart the Quiz</button>
+<button id="start-button">Start the Quiz</button>
+<button id="next-button" hidden>Next Button</button>
+<button id="restart-button" hidden>Restart the Quiz</button>
+<div id="answer-buttons" hidden class="button-grid">
+    <button class ="btn"> First Answer</button>
+    <button class ="btn"> Second Answer</button>
+    <button class ="btn"> Third Answer</button>
+    <button class ="btn"> Fourth Answer</button>
+</div>
     <!--questions will be inside of the container-->
-    <div class="question-boxes" class="hide"></div>
+    <div class="question-container" class="hide"></div>
     </div>
-    <div class="score-container hide">
-        <div id="user-score">Total Scores</div>
+    <!-- I created a score container that will contain total scores-->
+    <div class="score-container">
+        <div id="user-score" hidden>Total Scores</div>
 </html>
