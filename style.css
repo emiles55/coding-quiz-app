@@ -15,9 +15,13 @@ align-items: center;
 }
 /* styles the start, restart and next button*/
 #start-button, #restart-button, #next-button, #answer-button{
+
     font-size: 1.3em;
     padding: 0.5em 1.8em;
     border-radius: 0.2em;
+    margin: 20px;
+    cursor: pointer;
+    background-image: linear-gradient(to left, rgb(255, 192, 241),pink, rgb(225, 53, 225));
 }
 /*style for the container box*/
 .container{
@@ -35,5 +39,12 @@ align-items: center;
 }
 .button-grid{
     display:grid;
+    grid-template-columns: repeat(2, auto);
+    margin: 20px 0;
+    gap: 20px;
 
+
+}
+.hide{
+    display: none;
 }
