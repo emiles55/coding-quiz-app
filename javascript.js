@@ -39,10 +39,10 @@ function choseAnswer(){
 
 }
 function updateCountDown(){
-    totalTime.innerHTML=countDown.toString()+"seconds";
+    totalTime.innerHTML=countDown.toString()+" seconds";
     countDown--;
     if (countDown==0){
         totalTime.innerHTML="Time's up!"
-        return;
+        clearInterval(setInterval);
     }
 }
