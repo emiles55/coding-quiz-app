@@ -48,3 +48,6 @@ align-items: center;
 .hide{
     display: none;
 }
+.visible{
+    display: visible;
+}

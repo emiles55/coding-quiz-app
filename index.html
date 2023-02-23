@@ -8,20 +8,20 @@
     </head>
     <body>
 <!--this is the main container for where the questions will appear-->
-<div class ="container" visible>
+<div class ="container">
     <!--I created all the buttons to go inside the container-->
-
-<div id="answer-buttons" visible class="button-grid">
+<div id="questionAndAnswers" class="hide">
+<div id="answer-buttons" class="button-grid">
     <button id ="answer-button"> First Answer</button>
     <button id ="answer-button"> Second Answer</button>
     <button id ="answer-button"> Third Answer</button>
     <button id ="answer-button"> Fourth Answer</button>
 </div>
-<button id="start-button" visible>Start the Quiz</button>
-<button id="next-button" visible>Next Button</button>
-<button id="restart-button" visible>Restart the Quiz</button>
-<div class="timer">
-    <img src="timer-icon.svg"/>
+</div>
+<button id="start-button">Start the Quiz</button>
+<button id="next-button" class="hide">Next Button</button>
+<button id="restart-button" class="hide">Restart the Quiz</button>
+<div id="timer" class="hide">
     <span class="time-left">60s</span>
 </div>
 
