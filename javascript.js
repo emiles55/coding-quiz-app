@@ -7,6 +7,10 @@ const quizArray=[{question:"Javascript is a/n _____ language?",
 {question:"What keyword is used to check whether a given property is valid or not?",
  options:[{text: "in", correct: true},{text:"is in", correct: false}, {text:"exists", correct: false},{text:"lies", correct: false}],}
 ];
+const rightOrWrong=document.getElementById('right-or-wrong');
+let answerChosen;
+let correctAnswer;
+let scorePoints=0;
 const startButton=document.getElementById('start-button');
 const nextButton= document.getElementById('next-button');
 const restartButton= document.getElementById('restart-button');
@@ -57,7 +61,19 @@ question.options.forEach(options => {
 )
 }
 function choseAnswer(event){
-
+    answerChosen=event.target;
+    correctAnswer=answerChosen.dataset.correct;
+    console.log(correctAnswer);
+    if(correctAnswer=="true"){
+        rightOrWrong.innerHTML="That is correct! Hit the Next button to continue.";
+        rightOrWrong.classList.remove('hide');
+        scorePoints=scorePoints+10;
+    }
+    if(correctAnswer!="true"){
+        rightOrWrong.innerHTML="Sorry, wrong answer! Hit the Next button to continue.";
+        rightOrWrong.classList.remove('hide');
+        scorePoints=scorePoints-5;
+    }
 }
 function buttonReset(){
  //removes the extra buttons
