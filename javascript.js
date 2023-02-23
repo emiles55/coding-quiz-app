@@ -34,7 +34,6 @@ function startQuiz() {
     buttonGrid.classList.remove('hide');
     timer.classList.remove('hide');
     nextQuestion();
-
 }
 function nextQuestion(){
 buttonReset();
@@ -43,11 +42,15 @@ applyQuestion(randomQuestions[questionIndex]);
 
 }
 function applyQuestion(question){
+//creates new buttons and adds the text from the quizArray to them
 questionElement.innerText=question.question;
 question.options.forEach(options => {
     const createButton=document.createElement('button');
     createButton.innerText=options.text;
-    buttonGrid.classList.add('answer-button');
+    createButton.classList.add('answer-button');
+    if (options.correct){
+        createButton.dataset.correct=options.correct;
+    }
     createButton.addEventListener('click', choseAnswer);
     optionsElement.appendChild(createButton);
 }
@@ -57,11 +60,10 @@ function choseAnswer(event){
 
 }
 function buttonReset(){
- //   nextButton.classList.add('hide');
- //   while (optionsElement.firstChild){
- //       optionsElement.removeChild;
-   //     (optionsElement.firstChild)
-  //  }
+ //removes the extra buttons
+ while(optionsElement.firstChild){
+    optionsElement.removeChild(optionsElement.firstChild);
+ }
 }
 function updateCountDown(){
     totalTime.innerHTML=countDown.toString()+" seconds";
