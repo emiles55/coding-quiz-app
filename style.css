@@ -23,6 +23,16 @@ align-items: center;
     cursor: pointer;
     background-image: linear-gradient(to left, rgb(255, 192, 241),pink, rgb(225, 53, 225));
 }
+#questionDisplay {
+    font-size: 2.0em;
+}
+#next-button{
+justify-content: left;
+align-items: center;
+}
+#restart-button{
+    margin-left: 65px;
+    }
 /*style for the container box*/
 .container{
     background-color: white;
