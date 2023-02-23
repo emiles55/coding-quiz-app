@@ -1,3 +1,4 @@
+//an array for the questions and answers
 const quizArray=[{question:"Javascript is a/n _____ language?",
  options:[{text:"Object-Oriented", correct: true}, { text: "Object-based", correct: false}
  ,{text: "Procedural", correct: false},{text: "None of the Above", correct: false}], },
@@ -28,7 +29,9 @@ const optionsElement=document.getElementById('answer-buttons');
 
 function startQuiz() {
     setInterval(updateCountDown, 1000)
+    //sorts the questions
     randomQuestions=quizArray.sort(() => Math.random()-0.5);
+    //an index for each question in the array
     questionIndex=0;
     startButton.classList.add('hide');
     buttonGrid.classList.remove('hide');
@@ -51,6 +54,7 @@ question.options.forEach(options => {
     if (options.correct){
         createButton.dataset.correct=options.correct;
     }
+    //creates the answer buttons for each answer in the array
     createButton.addEventListener('click', choseAnswer);
     optionsElement.appendChild(createButton);
 }
@@ -82,6 +86,7 @@ function buttonReset(){
  }
 }
 function updateCountDown(){
+    //timer for the quiz
     totalTime.innerHTML=countDown.toString()+" seconds";
     countDown--;
     if (countDown==0){
