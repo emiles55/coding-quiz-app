@@ -1,9 +1,11 @@
 const quizArray=[{question:"Javascript is a/n _____ language?",
- options:["Object-Oriented", "Object-based","Procedural", "None of the Above"], correct:"Object-Oriented" },
+ options:[{text:"Object-Oriented", correct: true}, { text: "Object-based", correct: false}
+ ,{text: "Procedural", correct: false},{text: "None of the Above", correct: false}], },
 {question:"Which of the following methods can be used to display data in some form using Javascript?",
- options:["document.write()","console.log()","window.alert()","All of the Above"], correct: "All of the above" },
+ options:[{text:"document.write()", correct: false},{text: "console.log()",correct: false},{text:"window.alert()", correct: false},
+ {text:"All of the Above", correct: true}] },
 {question:"What keyword is used to check whether a given property is valid or not?",
- options:["in","is in", "exists", "lies"], correct:"in" }
+ options:[{text: "in", correct: true},{text:"is in", correct: false}, {text:"exists", correct: false},{text:"lies", correct: false}],}
 ];
 const startButton=document.getElementById('start-button');
 const nextButton= document.getElementById('next-button');
@@ -31,11 +33,13 @@ function startQuiz() {
     nextButton.classList.remove('hide');
     buttonGrid.classList.remove('hide');
     timer.classList.remove('hide');
-    nextQuestion()
+    nextQuestion();
 
 }
 function nextQuestion(){
-applyQuestion(randomQuestions[questionIndex])
+buttonReset();
+//takes the current question that is randomized
+applyQuestion(randomQuestions[questionIndex]);
 
 }
 function applyQuestion(question){
@@ -44,12 +48,20 @@ question.options.forEach(options => {
     const createButton=document.createElement('button');
     createButton.innerText=options.text;
     buttonGrid.classList.add('answer-button');
+    createButton.addEventListener('click', choseAnswer);
     optionsElement.appendChild(createButton);
 }
 )
 }
-function choseAnswer(){
+function choseAnswer(event){
 
+}
+function buttonReset(){
+ //   nextButton.classList.add('hide');
+ //   while (optionsElement.firstChild){
+ //       optionsElement.removeChild;
+   //     (optionsElement.firstChild)
+  //  }
 }
 function updateCountDown(){
     totalTime.innerHTML=countDown.toString()+" seconds";
