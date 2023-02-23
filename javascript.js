@@ -18,8 +18,6 @@ const buttonGrid=document.getElementById('questionAndAnswers');
 const timer=document.getElementById('timer');
 const totalTime=document.getElementById('time-left');
 startButton.addEventListener('click', startQuiz);
-nextButton.addEventListener('click', nextQuestion);
-restartButton.addEventListener('click', startQuiz);
 let countDown=60;
 let randomQuestions;
 let questionIndex;
@@ -33,8 +31,6 @@ function startQuiz() {
     randomQuestions=quizArray.sort(() => Math.random()-0.5);
     questionIndex=0;
     startButton.classList.add('hide');
-    restartButton.classList.remove("hide");
-    nextButton.classList.remove('hide');
     buttonGrid.classList.remove('hide');
     timer.classList.remove('hide');
     nextQuestion();
@@ -65,14 +61,18 @@ function choseAnswer(event){
     correctAnswer=answerChosen.dataset.correct;
     console.log(correctAnswer);
     if(correctAnswer=="true"){
-        rightOrWrong.innerHTML="That is correct! Hit the Next button to continue.";
+        rightOrWrong.innerHTML="That is correct!";
         rightOrWrong.classList.remove('hide');
         scorePoints=scorePoints+10;
+        questionIndex=questionIndex+1;
+        nextQuestion();
     }
     if(correctAnswer!="true"){
-        rightOrWrong.innerHTML="Sorry, wrong answer! Hit the Next button to continue.";
+        rightOrWrong.innerHTML="Sorry, wrong answer!";
         rightOrWrong.classList.remove('hide');
         scorePoints=scorePoints-5;
+        questionIndex=questionIndex+1;
+        nextQuestion();
     }
 }
 function buttonReset(){
