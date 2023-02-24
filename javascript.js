@@ -8,6 +8,7 @@ const quizArray=[{question:"Javascript is a/n _____ language?",
 {question:"What keyword is used to check whether a given property is valid or not?",
  options:[{text: "in", correct: true},{text:"is in", correct: false}, {text:"exists", correct: false},{text:"lies", correct: false}],}
 ];
+let timerVal;
 const rightOrWrong=document.getElementById('right-or-wrong');
 let answerChosen;
 let correctAnswer;
@@ -28,7 +29,7 @@ const optionsElement=document.getElementById('answer-buttons');
 
 
 function startQuiz() {
-    setInterval(updateCountDown, 1000)
+    timerVal=setInterval(updateCountDown, 1000);
     //sorts the questions
     randomQuestions=quizArray.sort(() => Math.random()-0.5);
     //an index for each question in the array
@@ -38,14 +39,22 @@ function startQuiz() {
     timer.classList.remove('hide');
     nextQuestion();
 }
+function displayScores(){
+    clearInterval(timerVal);
+    questionElement.innerText="Here are all the scores:";
+    scorePoints=scorePoints+countDown;
+    totalTime.classList.add('hide');
+    rightOrWrong.classList.add('hide');
+}
 function nextQuestion(){
-buttonReset();
+    buttonReset();
 //takes the current question that is randomized
-applyQuestion(randomQuestions[questionIndex]);
+    applyQuestion(randomQuestions[questionIndex]);
 
 }
 function applyQuestion(question){
 //creates new buttons and adds the text from the quizArray to them
+if(questionIndex<=2){
 questionElement.innerText=question.question;
 question.options.forEach(options => {
     const createButton=document.createElement('button');
@@ -57,10 +66,14 @@ question.options.forEach(options => {
     //creates the answer buttons for each answer in the array
     createButton.addEventListener('click', choseAnswer);
     optionsElement.appendChild(createButton);
+})
 }
-)
+else{
+    displayScores();
+}
 }
 function choseAnswer(event){
+    if(questionIndex<=2){
     answerChosen=event.target;
     correctAnswer=answerChosen.dataset.correct;
     console.log(correctAnswer);
@@ -79,6 +92,11 @@ function choseAnswer(event){
         nextQuestion();
     }
 }
+else{
+    scorePoints=scorePoints+countDown;
+    displayScores();
+}
+}
 function buttonReset(){
  //removes the extra buttons
  while(optionsElement.firstChild){
@@ -91,6 +109,7 @@ function updateCountDown(){
     countDown--;
     if (countDown==0){
         totalTime.innerHTML="Time's up!"
-        clearInterval(setInterval);
+        clearInterval(timerVal);
     }
+
 }
