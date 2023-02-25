@@ -8,11 +8,13 @@ const quizArray=[{question:"Javascript is a/n _____ language?",
 {question:"What keyword is used to check whether a given property is valid or not?",
  options:[{text: "in", correct: true},{text:"is in", correct: false}, {text:"exists", correct: false},{text:"lies", correct: false}],}
 ];
+totalScores=[];
 let timerVal;
 const rightOrWrong=document.getElementById('right-or-wrong');
 let answerChosen;
 let correctAnswer;
 let scorePoints=0;
+const userScores=document.getElementById('user-score');
 const startButton=document.getElementById('start-button');
 const nextButton= document.getElementById('next-button');
 const restartButton= document.getElementById('restart-button');
@@ -20,9 +22,11 @@ const buttonGrid=document.getElementById('questionAndAnswers');
 const timer=document.getElementById('timer');
 const totalTime=document.getElementById('time-left');
 startButton.addEventListener('click', startQuiz);
-let countDown=60;
+let countDown=20;
 let randomQuestions;
 let questionIndex;
+let totalScoresStringify;
+let totalScoresDestringify;
 const questionElement=document.getElementById('questionDisplay');
 console.log(questionElement);
 const optionsElement=document.getElementById('answer-buttons');
@@ -43,8 +47,22 @@ function displayScores(){
     clearInterval(timerVal);
     questionElement.innerText="Here are all the scores:";
     scorePoints=scorePoints+countDown;
+    totalScores.push(scorePoints);
+    console.log(totalScores);
     totalTime.classList.add('hide');
     rightOrWrong.classList.add('hide');
+    totalScoresStringify=JSON.stringify(totalScores);
+    localStorage.setItem('totalScores', totalScoresStringify);
+    totalScoresDestringify=JSON.parse(localStorage.getItem('totalScores'));
+    console.log(totalScoresDestringify+"hi");
+    for(let i=0; i<totalScoresDestringify-1; i++){
+console.log(totalScoresDestringify[i]+"hi");
+        var text=document.createTextNode(totalScoresDestringify[i]);
+        let userScoreText=document.createTextNode(" User score "+(i+1)+":"+totalScoresDestringify[i]);
+        userScores.appendChild(userScoreText);
+    }
+    userScores.classList.remove('hide');
+
 }
 function nextQuestion(){
     buttonReset();
@@ -108,8 +126,12 @@ function updateCountDown(){
     totalTime.innerHTML=countDown.toString()+" seconds";
     countDown--;
     if (countDown==0){
-        totalTime.innerHTML="Time's up!"
-        clearInterval(timerVal);
+        totalTime.innerHTML="Time's up!";
+        while(optionsElement.firstChild){
+            optionsElement.removeChild(optionsElement.firstChild);
+         }
+
+        displayScores();
     }
 
 }
