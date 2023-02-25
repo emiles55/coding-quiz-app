@@ -31,3 +31,4 @@ THEN the game is over
 WHEN the game is over
 
 THEN I can save my initials and score
+![codingquizapp](https://user-images.githubusercontent.com/46115810/221332092-8c53f3f2-e933-41e2-86fc-5512710e4d92.jpeg)
